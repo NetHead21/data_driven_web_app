@@ -1,0 +1,45 @@
+{% extends "shared/_layout.html" %}
+{% block title %} Register {% endblock %}
+{% block main_content %}
+
+{% block additional_css %}
+<link rel="stylesheet" href="/static/css/account.css">
+{% endblock %}
+
+<div class="form-container">
+    <form action="" method="POSt" class="account-form">
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% for category, message in messages %}
+        <div class="alert alert-{{category}} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+        <h1>Create an account on PyPI</h1>
+
+        <div class="form-floating mb-3">
+            <input name="name" type="name" class="form-control" id="floatingInput" placeholder="Your name" value="{{ name }}" required>
+            <label for="floatingInput">Your name</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input name="email" type="email" class="form-control" id="floatingInput" placeholder="name@example.com" value="{{ email }}" required>
+            <label for="floatingInput">Email address</label>
+        </div>
+        <div class="form-floating">
+            <input name="password" type="password" class="form-control mb-3" id="floatingPassword" placeholder="Password" required>
+            <label for="floatingPassword">Password</label>
+        </div>
+        <div class="form-floating">
+            <input name="repassword" type="password" class="form-control mb-3" id="floatingPassword" placeholder="Retype Password" required>
+            <label for="floatingPassword">Retype Password</label>
+        </div>
+        <button type="submit" class="btn btn-primary">Register</button>
+        <div style="clear: both"></div>
+    </form>
+</div>
+{% endblock %}
